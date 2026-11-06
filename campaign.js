@@ -255,12 +255,89 @@ const campaignCopy = {
   }
 };
 
+// Participation-form CTA copy, kept separate from the proposed rewards programme.
+// The linked Google Form is an external form; no Green Points or rewards are granted here.
+const participationCopy = {
+  en: {
+    nav: 'Participate', label: '07 / GET INVOLVED',
+    title: 'Be part of a cleaner Phuket.',
+    description: 'Support RAK PHUKET by sharing your response through our participation form.',
+    action: 'Open participation form ↗',
+    note: 'Opens Google Forms in a new tab. Please review the form before submitting.'
+  },
+  my: {
+    nav: 'ပါဝင်ရန်', label: '07 / ပါဝင်ဆောင်ရွက်ရန်',
+    title: 'ပိုမိုသန့်ရှင်းသော ဖူးခက်အတွက် ပါဝင်ပါ။',
+    description: 'RAK PHUKET အစီအစဉ်တွင် ပါဝင်ရန် ကျွန်ုပ်တို့၏ Google Form မှတစ်ဆင့် သင့်အဖြေကို မျှဝေနိုင်ပါသည်။',
+    action: 'ပါဝင်ရန် Google Form ဖွင့်မည် ↗',
+    note: 'Google Forms ကို tab အသစ်တွင် ဖွင့်မည်။ မပေးပို့မီ Form ကို စစ်ဆေးပါ။'
+  },
+  th: {
+    nav: 'ร่วมกิจกรรม', label: '07 / ร่วมเป็นส่วนหนึ่ง',
+    title: 'มาร่วมสร้างภูเก็ตที่สะอาดขึ้น',
+    description: 'ร่วมสนับสนุน RAK PHUKET โดยส่งคำตอบผ่านแบบฟอร์มของเรา',
+    action: 'เปิดแบบฟอร์มเข้าร่วม ↗',
+    note: 'แบบฟอร์ม Google จะเปิดในแท็บใหม่ โปรดตรวจสอบข้อมูลก่อนส่ง'
+  },
+  ru: {
+    nav: 'Участвовать', label: '07 / ПРИСОЕДИНЯЙТЕСЬ',
+    title: 'Сделаем Пхукет чище вместе.',
+    description: 'Поддержите RAK PHUKET, отправив ответ через нашу Google Форму.',
+    action: 'Открыть форму участия ↗',
+    note: 'Google Форма откроется в новой вкладке. Проверьте её перед отправкой.'
+  },
+  zh: {
+    nav: '参与活动', label: '07 / 参与其中',
+    title: '一起守护更清洁的普吉岛。',
+    description: '通过我们的 Google 表单提交回复，支持 RAK PHUKET 项目。',
+    action: '打开参与表单 ↗',
+    note: 'Google 表单将在新标签页中打开。提交前请检查表单内容。'
+  },
+  es: {
+    nav: 'Participar', label: '07 / PARTICIPA',
+    title: 'Forma parte de un Phuket más limpio.',
+    description: 'Apoya RAK PHUKET enviando tu respuesta a través de nuestro formulario de Google.',
+    action: 'Abrir formulario de participación ↗',
+    note: 'Google Forms se abre en otra pestaña. Revisa el formulario antes de enviarlo.'
+  },
+  fr: {
+    nav: 'Participer', label: '07 / PARTICIPEZ',
+    title: 'Ensemble pour un Phuket plus propre.',
+    description: 'Soutenez RAK PHUKET en répondant à notre formulaire Google.',
+    action: 'Ouvrir le formulaire de participation ↗',
+    note: 'Google Forms s’ouvre dans un nouvel onglet. Vérifiez le formulaire avant de l’envoyer.'
+  },
+  vi: {
+    nav: 'Tham gia', label: '07 / CÙNG THAM GIA',
+    title: 'Cùng xây dựng Phuket sạch đẹp hơn.',
+    description: 'Ủng hộ RAK PHUKET bằng cách gửi câu trả lời qua Google Form của chúng tôi.',
+    action: 'Mở biểu mẫu tham gia ↗',
+    note: 'Google Form sẽ mở trong thẻ mới. Vui lòng kiểm tra biểu mẫu trước khi gửi.'
+  },
+  ja: {
+    nav: '参加する', label: '07 / プロジェクトに参加',
+    title: 'もっときれいなプーケットへ。',
+    description: 'Google フォームから回答して、RAK PHUKET の活動に参加してください。',
+    action: '参加フォームを開く ↗',
+    note: 'Google フォームは新しいタブで開きます。送信前に内容をご確認ください。'
+  },
+  nl: {
+    nav: 'Meedoen', label: '07 / DOE MEE',
+    title: 'Samen voor een schoner Phuket.',
+    description: 'Steun RAK PHUKET door ons Google Formulier in te vullen.',
+    action: 'Open deelnameformulier ↗',
+    note: 'Google Formulieren opent in een nieuw tabblad. Controleer het formulier voor verzending.'
+  }
+};
+
 function renderCampaign() {
   const c = campaignCopy[lang] || campaignCopy.en;
   const t = translations[lang];
+  const p = participationCopy[lang] || participationCopy.en;
   // All markup comes from the fixed translations above, never from user input.
-  const sections = ['guide', 'rewards', 'volunteers', 'campaign', 'collection'];
-  document.getElementById('section-nav').innerHTML = sections.map((id, i) => `<a href="#${id}">${c.nav[i]}</a>`).join('');
+  const sections = ['guide', 'rewards', 'volunteers', 'campaign', 'participate', 'collection'];
+  const navLabels = [...c.nav.slice(0, 4), p.nav, c.nav[4]];
+  document.getElementById('section-nav').innerHTML = sections.map((id, i) => `<a href="#${id}">${navLabels[i]}</a>`).join('');
   document.getElementById('rewards').innerHTML = `
     <div class="eyebrow">04 / RAK PHUKET</div>
     <h2 id="reward-title">${c.title}</h2>
@@ -282,8 +359,13 @@ function renderCampaign() {
     <h2 id="campaign-title">${c.campaignTitle}</h2><p class="campaign-intro">${c.campaignIntro}</p>
     <div class="campaign-cards">${c.cards.map((card, i) => `<article><span class="campaign-number" aria-hidden="true">0${i+1}</span><h3>${card[0]}</h3><p>${card[1]}</p></article>`).join('')}</div>
     <details class="star-evidence"><summary>${c.metricsTitle}</summary><p>${c.metrics}</p></details>`;
+  document.getElementById('participation-label').textContent = p.label;
+  document.getElementById('participation-title').textContent = p.title;
+  document.getElementById('participation-description').textContent = p.description;
+  document.getElementById('participation-note').textContent = p.note;
+  document.getElementById('participation-link').textContent = p.action;
   document.getElementById('collection').innerHTML = `
-    <div class="eyebrow">07 / ${t.actionLabel}</div>
+    <div class="eyebrow">08 / ${t.actionLabel}</div>
     <h2 id="collection-title">${t.actionTitle}</h2><p>${t.actionText}</p>
     <a class="primary" href="https://www.google.com/maps/search/?api=1&amp;query=recycling+collection+points+Phuket+Thailand" target="_blank" rel="noopener noreferrer">${t.dropoff}</a>
     <p class="small">${t.outside}</p>`;

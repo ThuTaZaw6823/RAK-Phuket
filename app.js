@@ -280,17 +280,22 @@ render();
 function renderBins() {
     const t = translations[lang],
         i = codes.indexOf(lang);
-    document.getElementById('bin-boxes').innerHTML = [0, 1, 2, 3].map(c => '<button class="bin-box" data-bin="' + (c + 1) + '" aria-pressed="' + (category === c + 1) + '"><strong>' + ['♻', '🍃', '🗑', '⚠'][c] + ' ' + t.cats[c + 1] + '</strong><span>' + items.filter(x => x[1] === c).map(x => x[2][i]).join(' · ') + '</span></button>').join('')
+    document.getElementById('bin-boxes').innerHTML = [0, 1, 2, 3].map(c => '<button type="button" class="bin-box" data-bin="' + (c + 1) + '" aria-controls="results" aria-expanded="' + (category === c + 1) + '" aria-pressed="' + (category === c + 1) + '"><strong>' + ['♻', '🍃', '🗑', '⚠'][c] + ' ' + t.cats[c + 1] + '</strong><span>' + items.filter(x => x[1] === c).map(x => x[2][i]).join(' · ') + '</span></button>').join('')
 }
 document.getElementById('bin-boxes').addEventListener('click', e => {
     const b = e.target.closest('[data-bin]');
     if (b) {
-        category = Number(b.dataset.bin);
+        const selectedBin = Number(b.dataset.bin);
+        const opening = category !== selectedBin;
+        category = opening ? selectedBin : null;
         document.getElementById('search').value = '';
         render();
-        document.getElementById('results').scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest'
-        })
+        // Only move to the item cards when opening, not when closing.
+        if (opening) {
+            document.getElementById('results').scrollIntoView({
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                block: 'nearest'
+            });
+        }
     }
 });
