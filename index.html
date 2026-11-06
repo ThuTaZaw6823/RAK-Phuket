@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="RAK PHUKET — a ten-language guide to waste sorting in Phuket.">
+    <title>RAK PHUKET — Keep Phuket Beautiful</title>
+    <link rel="stylesheet" href="style.css?v=volunteer-loyalty-1">
+</head>
+
+<body>
+    <header><a class="brand" href="#"><span class="logo-mark" role="img" aria-label="RAK PHUKET logo"></span><span>RAK
+                PHUKET<small>KEEP PHUKET BEAUTIFUL</small></span></a><select id="language" aria-label="Language">
+            <option value="en">English</option>
+            <option value="my">မြန်မာ</option>
+            <option value="th">ไทย</option>
+            <option value="ru">Русский</option>
+            <option value="zh">中文</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="ja">日本語</option>
+            <option value="nl">Nederlands</option>
+        </select></header>
+    <nav class="section-nav" aria-label="Page sections" id="section-nav"></nav>
+    <main>
+        <section class="hero">
+            <div>
+                <div class="eyebrow" id="eyebrow"></div>
+                <h1 id="title"></h1>
+                <p id="intro"></p><a href="#guide" class="primary" id="start"></a>
+                <div class="hero-note" id="note"></div>
+            </div>
+            <div class="art" aria-hidden="true"><span class="orbit">↻</span>
+                <div class="bottle">
+                    <div class="cap"></div>
+                    <div class="bottle-neck"></div>
+                    <div class="bottle-body"><span>↻</span></div>
+                </div>
+                <div class="can">↻</div>
+                <div class="leaf"></div><span class="art-tag">LESS WASTE. MORE FUTURE.</span>
+            </div>
+        </section>
+        <section id="guide">
+            <div class="sectionhead">
+                <div>
+                    <div class="eyebrow">01 / <span id="guideLabel"></span></div>
+                    <h2 id="guideTitle"></h2>
+                </div>
+                <p id="local"></p>
+            </div>
+            <div class="search"><span aria-hidden="true">⌕</span><input id="search" type="search"></div>
+            <div class="filters" id="filters"></div>
+            <div id="bin-boxes" class="bin-boxes"></div>
+            <div class="results" id="results" aria-live="polite"></div>
+        </section>
+        <section class="journey">
+            <div class="eyebrow">02 / <span id="processLabel"></span></div>
+            <h2 id="processTitle"></h2>
+            <div id="steps" class="steps"></div>
+        </section>
+        <section id="green-stars" aria-label="RAK PHUKET Green Stars"></section>
+        <section id="rewards" class="reward-section" aria-labelledby="reward-title"></section>
+        <section id="volunteers" class="volunteer-section" aria-labelledby="volunteer-title"></section>
+        <section id="campaign" class="campaign-section" aria-labelledby="campaign-title"></section>
+        <section id="collection" class="collection-section" aria-labelledby="collection-title"></section>
+        <section class="bottom">
+            <div class="qrpanel"><img src="qr.svg" width="170" height="170" alt="QR code to open RAK PHUKET">
+                <h3 id="qrTitle"></h3>
+                <p id="qrText"></p><button id="print"></button>
+            </div>
+        </section>
+        <section class="sources">
+            <h3 id="sourcesTitle"></h3><a href="https://thailand.go.th/issue-focus-detail/001_04_030?hl=en"
+                target="_blank" rel="noopener">Thailand.go.th / Pollution Control Department ↗</a>
+            <p id="sourceNote"></p>
+        </section>
+    </main>
+    <footer><span class="brand">RAK PHUKET</span><span id="footer"></span></footer>
+    <script src="languages.js"></script>
+    <script src="green-stars.js?v=volunteer-loyalty-1"></script>
+    <script src="campaign.js?v=volunteer-loyalty-1"></script>
+    <script src="app.js?v=volunteer-loyalty-1"></script>
+</body>
+
+</html>
